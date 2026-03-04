@@ -12,16 +12,16 @@
   // ════════════════════════════════════════
   //  PASTE YOUR SUPABASE VALUES HERE
   // ════════════════════════════════════════
-  const SUPABASE_URL  = 'https://kstbnvcozplquymqecck.supabase.co';
-  const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtzdGJudmNvenBscXV5bXFlY2NrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4NzY5ODYsImV4cCI6MjA4NzQ1Mjk4Nn0.RqcYRWvz4O-V1L5NAne8mP-nHKff8V451nAzle3CLWU';
+  const SUPABASE_URL  = 'PASTE_YOUR_PROJECT_URL_HERE';
+  const SUPABASE_ANON = 'PASTE_YOUR_ANON_KEY_HERE';
   // ════════════════════════════════════════
 
   // Your contact info — update these
-  const CONTACT_PHONE     = '(501) 237-6481';  // Update with your number
+  const CONTACT_PHONE     = '(501) 000-0000';  // Update with your number
   const CONTACT_EMAIL     = 'nathan@tollivertime.com';
   const CONTACT_INSTAGRAM = 'tollivertimepieces';
   const CONTACT_LOCATION  = 'Conway, Arkansas';
-  const OWNER_USER_ID = '73efe261-02c3-4b58-9cea-459e1cfed7c6'; // Your DialTrader user_id from Supabase
+  const OWNER_USER_ID = 'PASTE_YOUR_USER_ID_HERE'; // Your DialTrader user_id from Supabase
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -934,12 +934,16 @@ async function init() {
       db.from('inventory').select('*').eq('user_id', OWNER_USER_ID).eq('is_sample', false).order('created_at', { ascending: false }),
       db.from('sold_inventory').select('brand,model,ref,sale_date,photo_urls').eq('user_id', OWNER_USER_ID).eq('is_sample', false).order('sale_date', { ascending: false }).limit(50)
     ]);
-    allWatches = invRes.data || [];
+    const allInv = invRes.data || [];
     soldWatches = soldRes.data || [];
-  } catch(e) { allWatches = []; soldWatches = []; }
+    // stage_index >= 5 means Sale Agreed or later — no longer available on storefront
+    allWatches = allInv.filter(w => w.stage_index == null || w.stage_index < 5);
+    const pendingSales = allInv.filter(w => w.stage_index != null && w.stage_index >= 5).length;
+    window._pendingSales = pendingSales;
+  } catch(e) { allWatches = []; soldWatches = []; window._pendingSales = 0; }
 
   document.getElementById('stat-available').textContent = allWatches.length;
-  document.getElementById('stat-sold').textContent = soldWatches.length + '+';
+  document.getElementById('stat-sold').textContent = (soldWatches.length + (window._pendingSales||0)) + '+';
 
   // Brand filter
   const brands = [...new Set(allWatches.map(w=>w.brand).filter(Boolean))].sort();

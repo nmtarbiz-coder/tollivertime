@@ -148,8 +148,8 @@ header nav a:hover { color: #fff; border-bottom-color: var(--gold); }
   .logo-tagline { display: none; }
   .logo-icon { font-size: 1rem; margin-bottom: 0.1rem; }
   .logo-img { height: 38px; }
-  header nav { gap: 1.2rem; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 2px; }
-  header nav a { font-size: 0.6rem; letter-spacing: 0.1em; white-space: nowrap; }
+  header nav { gap: 0.4rem 0.9rem; flex-wrap: wrap; justify-content: center; overflow-x: visible; padding: 0 0.5rem 2px; }
+  header nav a { font-size: 0.58rem; letter-spacing: 0.08em; white-space: nowrap; }
 }
 
 /* ─── HERO ───────────────────────────────────── */
@@ -380,6 +380,10 @@ header nav a:hover { color: #fff; border-bottom-color: var(--gold); }
 .lb-photo-panel { background: var(--body-surface2); position: relative; }
 .lb-main-img { aspect-ratio: 3/4; overflow: hidden; }
 .lb-main-img img { width:100%; height:100%; object-fit:cover; display:block; }
+@media(max-width:700px){
+  .lb-main-img { aspect-ratio: unset; width:100%; }
+  .lb-main-img img { width:100%; height:auto; max-height:65dvh; object-fit:contain; background:#111; }
+}
 .lb-main-placeholder { aspect-ratio:3/4; display:flex; align-items:center; justify-content:center; font-size:5rem; opacity:0.1; }
 .lb-thumbs-row { display:flex; gap:2px; padding:2px; overflow-x:auto; background:var(--body-border); }
 .lb-thumb { width:65px; height:65px; flex-shrink:0; overflow:hidden; cursor:pointer; opacity:0.5; transition:opacity 0.15s; }

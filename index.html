@@ -1048,8 +1048,9 @@ async function init() {
     ]);
     const allInv = invRes.data || [];
     soldWatches = soldRes.data || [];
-    allWatches = allInv.filter(w => w.stage_index == null || w.stage_index < 5);
-    window._pendingWatches = allInv.filter(w => w.stage_index != null && w.stage_index >= 5);
+    // stage null/0-8 => show on storefront (5-8 get SALE PENDING badge); stage 9 => closed/sold
+    allWatches = allInv.filter(w => w.stage_index == null || w.stage_index <= 8);
+    window._pendingWatches = allInv.filter(w => w.stage_index != null && w.stage_index >= 5 && w.stage_index <= 8);
     window._pendingSales = window._pendingWatches.length;
   } catch(e) { allWatches = []; soldWatches = []; }
 
@@ -1067,32 +1068,7 @@ async function init() {
 
   renderWatches(allWatches);
   renderSold();
-  // Show stage 5+ watches (Sale Agreed / in pipeline) in sold section with badge
-  (function(){
-    var pending = window._pendingWatches || [];
-    if(!pending.length) return;
-    var wrap = document.getElementById('sold-wrap');
-    if(wrap) wrap.style.display = '';
-    var grid = document.getElementById('sold-grid');
-    if(!grid) return;
-    pending.forEach(function(w){
-      var photo = (w.photo_urls && w.photo_urls.length)
-        ? '<img src="'+w.photo_urls[0]+'" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;">'
-        : '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;opacity:0.15;">&#8981;</div>';
-      var card = document.createElement('div');
-      card.className = 'sold-card';
-      card.innerHTML =
-        '<div style="position:relative">'
-        + '<div style="position:absolute;top:8px;left:8px;z-index:2;background:var(--gold);color:#000;font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;padding:3px 8px;">SALE IN PROGRESS</div>'
-        + '<div class="sold-photo">'+photo+'</div>'
-        + '</div>'
-        + '<div class="sold-card-body">'
-        + '<div class="sold-brand">'+(w.brand||'')+'</div>'
-        + '<div class="sold-model">'+(w.model||'')+(w.ref?' &middot; '+w.ref:'')+'</div>'
-        + '</div>';
-      grid.insertBefore(card, grid.firstChild);
-    });
-  })();
+  // Stage 5-8 watches now shown in the main grid with SALE PENDING badge via renderWatches()
   hideLoader();
 }
 

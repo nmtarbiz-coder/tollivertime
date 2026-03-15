@@ -12,18 +12,17 @@
   // ════════════════════════════════════════
   //  PASTE YOUR SUPABASE VALUES HERE
   // ════════════════════════════════════════
-const SUPABASE_URL  = 'https://kstbnvcozplquymqecck.supabase.co';
+  const SUPABASE_URL  = 'https://kstbnvcozplquymqecck.supabase.co';
   const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtzdGJudmNvenBscXV5bXFlY2NrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4NzY5ODYsImV4cCI6MjA4NzQ1Mjk4Nn0.RqcYRWvz4O-V1L5NAne8mP-nHKff8V451nAzle3CLWU';
 
   // ════════════════════════════════════════
 
   // Your contact info — update these
   const CONTACT_PHONE     = '(501) 237-6481';  // Update with your number
-  const CONTACT_EMAIL     = 'nathan@tollivertime.com';
+  const CONTACT_EMAIL     = 'info@tollivertime.com';
   const CONTACT_INSTAGRAM = 'tollivertimepieces';
   const CONTACT_LOCATION  = 'Conway, Arkansas';
   const OWNER_USER_ID = '73efe261-02c3-4b58-9cea-459e1cfed7c6'; // Your DialTrader user_id from Supabase
-</script>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -1135,17 +1134,21 @@ function renderWatches(watches) {
   grid.innerHTML = watches.map((w,i) => {
     const photos = w.photo_urls || [];
     const mainPhoto = photos[0];
-    const price = w.listed_price ? '$'+Number(w.listed_price).toLocaleString() : 'Inquire for Price';
+    const isSalePending = w.stage_index != null && w.stage_index >= 5 && w.stage_index <= 8;
+    const price = isSalePending ? 'Sale Pending' : (w.listed_price ? '$'+Number(w.listed_price).toLocaleString() : 'Inquire for Price');
     const chips = [w.condition, w.box_papers, w.case_material].filter(Boolean).slice(0,3);
 
-    return `<div class="watch-card" onclick="openLb('${w.id}')" style="animation-delay:${Math.min(i,12)*0.04}s">
+    return `<div class="watch-card" onclick="openLb('${w.id}')" style="animation-delay:${Math.min(i,12)*0.04}s${isSalePending?';opacity:0.82':''}">
       <div class="watch-photo">
         ${mainPhoto
           ? `<img src="${mainPhoto}" alt="${w.brand||''} ${w.model||''}" loading="lazy">`
           : `<div class="watch-photo-placeholder"><div class="ph-icon">🕐</div><div class="ph-brand">${w.brand||''}</div></div>`
         }
         ${photos.length>1?`<div class="photo-count-badge">📷 ${photos.length}</div>`:''}
-        ${w.box_papers==='Full Set (Box + Papers)'?`<div class="watch-tag">Full Set</div>`:''}
+        ${isSalePending
+          ? `<div style="position:absolute;top:10px;left:10px;z-index:2;background:#C9A84C;color:#000;font-size:0.52rem;letter-spacing:0.13em;text-transform:uppercase;font-weight:800;padding:4px 10px;font-family:'Raleway',sans-serif;">SALE PENDING</div>`
+          : (w.box_papers==='Full Set (Box + Papers)'?`<div class="watch-tag">Full Set</div>`:'')
+        }
       </div>
       <div class="watch-info">
         <div class="watch-card-brand">${w.brand||''}${w.year?' · '+w.year:''}</div>
@@ -1153,8 +1156,11 @@ function renderWatches(watches) {
         <div class="watch-card-ref">${w.ref||'—'}</div>
         ${chips.length?`<div class="watch-card-chips">${chips.map(c=>`<span class="chip">${c}</span>`).join('')}</div>`:''}
         <div class="watch-card-footer">
-          <div class="watch-price">${price}</div>
-          <button class="watch-inquire" onclick="event.stopPropagation();doInquire('${(w.brand||'')+' '+(w.model||'')}')">Inquire</button>
+          <div class="watch-price" style="${isSalePending?'color:var(--gold2);font-style:italic;':''}">${price}</div>
+          ${isSalePending
+            ? `<button class="watch-inquire" style="opacity:0.5;cursor:default" disabled>Pending</button>`
+            : `<button class="watch-inquire" onclick="event.stopPropagation();doInquire('${(w.brand||'')+' '+(w.model||'')}')">Inquire</button>`
+          }
         </div>
       </div>
     </div>`;

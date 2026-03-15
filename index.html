@@ -1123,7 +1123,7 @@ function renderWatches(watches) {
         }
         ${photos.length>1?`<div class="photo-count-badge">📷 ${photos.length}</div>`:''}
         ${isSalePending
-          ? `<div style="position:absolute;top:10px;left:10px;z-index:2;background:#C9A84C;color:#000;font-size:0.52rem;letter-spacing:0.13em;text-transform:uppercase;font-weight:800;padding:4px 10px;font-family:'Raleway',sans-serif;">SALE PENDING</div>`
+          ? `<div style="position:absolute;top:0;left:0;right:0;z-index:2;background:#C9A84C;color:#000;font-size:0.85rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:800;padding:10px 0;font-family:'Raleway',sans-serif;text-align:center;width:100%;">SALE PENDING</div>`
           : (w.box_papers==='Full Set (Box + Papers)'?`<div class="watch-tag">Full Set</div>`:'')
         }
       </div>

@@ -545,6 +545,10 @@ footer { background:#1A1A1A; padding:3rem 2rem; }
 .trust-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--text-dark); }
 .trust-desc { font-size: 0.72rem; color: var(--text-mid); line-height: 1.7; }
 @media (max-width: 640px) { .trust-grid { grid-template-columns: 1fr; } }
+@media (max-width: 640px) {
+  .hero-review-grid { grid-template-columns: 1fr !important; }
+  .hero-review-img { min-height: 280px !important; height: 280px !important; }
+}
 </style>
 </head>
 <body>
@@ -884,6 +888,68 @@ footer { background:#1A1A1A; padding:3rem 2rem; }
     </div>
   </div>
 </section>
+
+<!-- TESTIMONIALS -->
+<section id="reviews" style="background:var(--body-surface2);border-top:1px solid var(--body-border);border-bottom:1px solid var(--body-border);padding:4rem 2rem;">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="section-header">
+      <div class="section-eyebrow">What Buyers Say</div>
+      <h2 class="section-title">Real <em>Reviews</em></h2>
+      <div class="section-line"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem">
+      <div style="background:var(--body-surface);border:1px solid var(--body-border);padding:2rem;border-top:3px solid var(--gold)">
+        <div style="color:var(--gold);font-size:0.85rem;letter-spacing:0.1em;margin-bottom:1rem">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:400;line-height:1.7;color:var(--text-dark);margin-bottom:1.25rem;font-style:italic">"We recently sold a Panerai watch to this company and the transaction was very smooth. Communication was professional, the offer was fair, and payment was made promptly as agreed. A seamless and reliable experience — highly recommended."</p>
+        <div style="font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-mid);font-weight:600">Spark &amp; Co. Timepieces</div>
+        <div style="font-size:0.68rem;color:var(--text-light);margin-top:0.2rem">&#9733; Google Review &middot; 6 days ago</div>
+      </div>
+      <div style="background:var(--body-surface);border:1px solid var(--body-border);padding:2rem;border-top:3px solid var(--gold)">
+        <div style="color:var(--gold);font-size:0.85rem;letter-spacing:0.1em;margin-bottom:1rem">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:400;line-height:1.7;color:var(--text-dark);margin-bottom:1.25rem;font-style:italic">"Super great to work with. Very knowledgeable on watches and easy to work with. Will do many more deals with!"</p>
+        <div style="font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-mid);font-weight:600">Jacob Elgaen</div>
+        <div style="font-size:0.68rem;color:var(--text-light);margin-top:0.2rem">&#9733; Google Review &middot; 2 weeks ago</div>
+      </div>
+      <div style="background:var(--body-surface);border:1px solid var(--body-border);padding:2rem;border-top:3px solid var(--gold);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;">
+        <div style="color:var(--gold);font-size:1.5rem;margin-bottom:1rem">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:400;line-height:1.7;color:var(--text-mid);font-style:italic;margin-bottom:1.5rem">"More reviews coming soon as we grow."</p>
+        <a href="https://g.page/r/CfmqFdjRxcMHEAI/review" target="_blank" style="font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:0.5rem 1.2rem;text-decoration:none;">Leave a Review</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- KENNETH PINEIRO FEATURED REVIEW -->
+<div style="background:var(--body-surface);border-top:1px solid var(--body-border);border-bottom:1px solid var(--body-border);padding:4rem 2rem;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:2.5rem;">
+      <div class="section-eyebrow">Featured Review</div>
+      <h2 class="section-title">A Customer <em>Experience</em></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="hero-review-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--body-border);border-top:3px solid var(--gold);overflow:hidden;">
+      <div class="hero-review-img" style="position:relative;overflow:hidden;height:420px;background:#111;">
+        <img src="https://i.imgur.com/DsqKnAn.jpeg"
+             alt="Kenneth Pineiro wearing his Rolex Submariner - Tolliver Timepieces"
+             style="width:100%;height:420px;object-fit:cover;object-position:center 20%;display:block;"
+             onerror="this.src='https://i.imgur.com/DsqKnAn.jpg'">
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.6));padding:1rem;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.8);">Verified Buyer — Wrist Shot</div>
+      </div>
+      <div style="padding:2.5rem;display:flex;flex-direction:column;justify-content:center;background:var(--body-surface);">
+        <div style="color:var(--gold);font-size:0.9rem;letter-spacing:0.1em;margin-bottom:1.25rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:400;line-height:1.8;color:var(--text-dark);font-style:italic;margin-bottom:1.5rem;">&ldquo;I&rsquo;ve had nothing but exceptionally great service, transaction experience and respect from you and your business. You&rsquo;re a great professional and a man of your word.&rdquo;</p>
+        <p style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:400;line-height:1.8;color:var(--text-dark);font-style:italic;margin-bottom:1.5rem;">Packaging and shipping: impeccable &mdash; fully wrapped and protected, right on time. Your personal letter adds a level of personalization that, dealing on the internet, you rarely get.</p>
+        <p style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:400;line-height:1.8;color:var(--text-dark);font-style:italic;margin-bottom:2rem;">The watch looks like a million bucks &mdash; I&rsquo;m beyond stoked.&rdquo;</p>
+        <div>
+          <div style="font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-mid);font-weight:700;">Kenneth Pineiro</div>
+          <div style="font-size:0.65rem;color:var(--text-light);margin-top:0.25rem;letter-spacing:0.06em;">Chantilly, VA &nbsp;&middot;&nbsp; Verified Buyer</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END KENNETH PINEIRO REVIEW -->
 
 <!-- CONTACT -->
 <div class="contact-strip" id="contact">

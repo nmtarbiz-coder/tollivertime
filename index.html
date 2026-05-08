@@ -1078,58 +1078,52 @@ footer { background:#1A1A1A; padding:3rem 2rem; }
 <!-- GOOGLE REVIEWS FETCH SCRIPT -->
 <script>
 (function() {
-  function renderStars(rating) {
+  function renderStars(n) {
     var s = '';
-    for (var i = 1; i <= 5; i++) s += i <= rating ? '★' : '☆';
+    for (var i = 1; i <= 5; i++) s += i <= n ? '★' : '☆';
     return s;
   }
-
   function loadReviews() {
     fetch('/api/reviews')
-      .then(function(r) { return r.json(); })
+      .then(function(r){ return r.json(); })
       .then(function(data) {
         var loading = document.getElementById('g-reviews-loading');
         if (loading) loading.style.display = 'none';
-
-        if (data.error) { console.warn('Reviews error:', data.error); return; }
-
-        // Update rating badge
-        var ratingEl = document.getElementById('g-rating-num');
-        var starsEl  = document.getElementById('g-stars');
-        var countEl  = document.getElementById('g-count');
-        if (ratingEl) ratingEl.textContent = parseFloat(data.rating).toFixed(1);
-        if (starsEl)  starsEl.textContent = renderStars(Math.round(data.rating));
-        if (countEl)  countEl.textContent = data.total + ' Google reviews';
-
-        // Render review cards
+        if (data.error) { console.warn('Reviews:', data.error); return; }
+        var el = document.getElementById('g-rating-num');
+        if (el) el.textContent = parseFloat(data.rating).toFixed(1);
+        el = document.getElementById('g-stars');
+        if (el) el.textContent = renderStars(Math.round(data.rating));
+        el = document.getElementById('g-count');
+        if (el) el.textContent = data.total + ' Google reviews';
         var grid = document.getElementById('g-reviews-grid');
         if (!grid || !data.reviews || !data.reviews.length) return;
-
-        grid.innerHTML = data.reviews.map(function(r) {
-          var stars = renderStars(r.rating);
+        var html = '';
+        data.reviews.forEach(function(r) {
+          var initial = r.author ? r.author[0].toUpperCase() : '?';
           var avatar = r.photo
             ? '<img src="' + r.photo + '" style="width:40px;height:40px;border-radius:50%;object-fit:cover;">'
-            : '<div style="width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:700;color:#000;font-size:1rem;">' + (r.author||'?')[0].toUpperCase() + '</div>';
-          return '<div style="background:var(--body-surface);border:1px solid var(--body-border);padding:1.5rem;">'
+            : '<div style="width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:700;color:#000;font-size:1rem;">' + initial + '</div>';
+          var txt = r.text ? '“' + r.text + '”' : '<em style="color:var(--text-mid);">★ Rating only</em>';
+          html += '<div style="background:var(--body-surface);border:1px solid var(--body-border);padding:1.5rem;">'
             + '<div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;">'
             + avatar
             + '<div>'
-            + '<div style="font-family:'Raleway',sans-serif;font-size:0.75rem;font-weight:700;color:var(--text-dark);">' + r.author + '</div>'
+            + '<div style="font-family:Raleway,sans-serif;font-size:0.75rem;font-weight:700;color:var(--text-dark);">' + r.author + '</div>'
             + '<div style="font-size:0.62rem;color:var(--text-mid);margin-top:0.1rem;">' + r.time + '</div>'
             + '</div></div>'
-            + '<div style="color:#FBBC05;font-size:0.85rem;letter-spacing:0.05em;margin-bottom:0.75rem;">' + stars + '</div>'
-            + '<div style="font-family:'Playfair Display',serif;font-size:0.82rem;line-height:1.75;color:var(--text-dark);font-style:italic;">'
-            + (r.text ? '&ldquo;' + r.text + '&rdquo;' : '<em style="color:var(--text-mid);">&#9733; Rating only</em>')
-            + '</div></div>';
-        }).join('');
+            + '<div style="color:#FBBC05;font-size:0.85rem;margin-bottom:0.75rem;">' + renderStars(r.rating) + '</div>'
+            + '<div style="font-family:Georgia,serif;font-size:0.82rem;line-height:1.75;color:var(--text-dark);font-style:italic;">' + txt + '</div>'
+            + '</div>';
+        });
+        grid.innerHTML = html;
       })
       .catch(function(err) {
-        console.warn('Could not load reviews:', err);
+        console.warn('Reviews load error:', err);
         var loading = document.getElementById('g-reviews-loading');
         if (loading) loading.style.display = 'none';
       });
   }
-
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', loadReviews);
   } else {

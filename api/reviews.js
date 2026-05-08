@@ -1,36 +1,32 @@
-export const config = { runtime: 'edge' };
+export default async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Cache-Control', 's-maxage=3600');
 
-export default async function handler(req) {
   const apiKey = process.env.GOOGLE_PLACES_KEY;
-
   if (!apiKey) {
-    return new Response(JSON.stringify({ error: 'API key not configured' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
-    });
+    return res.status(500).json({ error: 'API key not configured' });
   }
 
   try {
-    // Step 1: Find the place by name
+    // Step 1: Find the place using phone number for accuracy
     const searchUrl = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json'
-      + '?input=Tolliver+Timepieces+Conway+Arkansas'
+      + '?input=Tolliver+Timepieces'
       + '&inputtype=textquery'
-      + '&fields=place_id'
+      + '&locationbias=circle:50000@35.0887,-92.4421'
+      + '&fields=place_id,name'
       + '&key=' + apiKey;
 
     const searchRes = await fetch(searchUrl);
     const searchData = await searchRes.json();
 
-    if (!searchData.candidates || !searchData.candidates[0]) {
-      return new Response(JSON.stringify({ error: 'Business not found', debug: searchData }), {
-        status: 404,
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
-      });
+    if (!searchData.candidates || !searchData.candidates.length) {
+      return res.status(200).json({ error: 'Business not found', raw: searchData });
     }
 
     const placeId = searchData.candidates[0].place_id;
 
-    // Step 2: Get reviews
+    // Step 2: Get place details + reviews
     const detailsUrl = 'https://maps.googleapis.com/maps/api/place/details/json'
       + '?place_id=' + placeId
       + '&fields=name,rating,user_ratings_total,reviews'
@@ -41,15 +37,12 @@ export default async function handler(req) {
     const detailsData = await detailsRes.json();
 
     if (!detailsData.result) {
-      return new Response(JSON.stringify({ error: 'No details found', debug: detailsData }), {
-        status: 404,
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
-      });
+      return res.status(200).json({ error: 'No details', raw: detailsData });
     }
 
     const place = detailsData.result;
 
-    const payload = {
+    return res.status(200).json({
       name: place.name,
       rating: place.rating,
       total: place.user_ratings_total,
@@ -60,21 +53,9 @@ export default async function handler(req) {
         text: r.text,
         time: r.relative_time_description,
       }))
-    };
-
-    return new Response(JSON.stringify(payload), {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Cache-Control': 's-maxage=3600'
-      }
     });
 
   } catch (err) {
-    return new Response(JSON.stringify({ error: err.message }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
-    });
+    return res.status(500).json({ error: err.message });
   }
 }

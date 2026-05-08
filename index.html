@@ -1078,101 +1078,58 @@ footer { background:#1A1A1A; padding:3rem 2rem; }
 <!-- GOOGLE REVIEWS FETCH SCRIPT -->
 <script>
 (function() {
-  var API_KEY = 'AIzaSyCSVx-dKAGJvG0bAzh3J3pMYA16a09FCds';
   function renderStars(rating) {
-    var full = Math.floor(rating);
-    var half = rating - full >= 0.5;
     var s = '';
-    for (var i = 0; i < full; i++) s += '★';
-    if (half) s += '½';
+    for (var i = 1; i <= 5; i++) s += i <= rating ? '★' : '☆';
     return s;
   }
 
-  function timeAgo(unixSeconds) {
-    var diff = Math.floor(Date.now() / 1000) - unixSeconds;
-    if (diff < 3600) return 'Just now';
-    if (diff < 86400) return Math.floor(diff/3600) + 'h ago';
-    if (diff < 2592000) return Math.floor(diff/86400) + ' days ago';
-    if (diff < 31536000) return Math.floor(diff/2592000) + ' months ago';
-    return Math.floor(diff/31536000) + ' years ago';
-  }
-
   function loadReviews() {
-    var url = 'https://maps.googleapis.com/maps/api/place/details/json'
-      + '?place_id=' + PLACE_ID
-      + '&fields=name,rating,user_ratings_total,reviews'
-      + '&reviews_sort=newest'
-      + '&key=' + API_KEY;
-
-    // Use a CORS proxy since Places API doesn't support client-side calls directly
-    // We'll use the Maps JavaScript API instead (loads as a script tag)
-    var script = document.createElement('script');
-    script.src = 'https://maps.googleapis.com/maps/api/js?key=' + API_KEY
-      + '&libraries=places&callback=initPlacesReviews';
-    document.head.appendChild(script);
-  }
-
-  window.initPlacesReviews = function() {
-    var service = new google.maps.places.PlacesService(document.createElement('div'));
-    // First find the place by name+phone, then get details
-    service.findPlaceFromQuery({
-      query: 'Tolliver Timepieces Conway Arkansas',
-      fields: ['place_id']
-    }, function(results, status) {
-      if (status !== google.maps.places.PlacesServiceStatus.OK || !results || !results[0]) {
+    fetch('/api/reviews')
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
         var loading = document.getElementById('g-reviews-loading');
         if (loading) loading.style.display = 'none';
-        return;
-      }
-      var foundPlaceId = results[0].place_id;
-      service.getDetails({
-        placeId: foundPlaceId,
-        fields: ['name', 'rating', 'user_ratings_total', 'reviews']
-      }, function(place, status) {
-      var loading = document.getElementById('g-reviews-loading');
-      if (loading) loading.style.display = 'none';
 
-      if (status !== google.maps.places.PlacesServiceStatus.OK || !place) {
-        if (loading) { loading.style.display = 'block'; loading.textContent = ''; }
-        return;
-      }
+        if (data.error) { console.warn('Reviews error:', data.error); return; }
 
-      // Update rating badge
-      var ratingEl = document.getElementById('g-rating-num');
-      var starsEl  = document.getElementById('g-stars');
-      var countEl  = document.getElementById('g-count');
-      if (ratingEl) ratingEl.textContent = place.rating.toFixed(1);
-      if (starsEl)  starsEl.style.color = '#FBBC05';
-      if (countEl)  countEl.textContent = place.user_ratings_total + ' Google reviews';
+        // Update rating badge
+        var ratingEl = document.getElementById('g-rating-num');
+        var starsEl  = document.getElementById('g-stars');
+        var countEl  = document.getElementById('g-count');
+        if (ratingEl) ratingEl.textContent = parseFloat(data.rating).toFixed(1);
+        if (starsEl)  starsEl.textContent = renderStars(Math.round(data.rating));
+        if (countEl)  countEl.textContent = data.total + ' Google reviews';
 
-      // Render review cards
-      var grid = document.getElementById('g-reviews-grid');
-      if (!grid || !place.reviews) return;
-      var html = '';
-      place.reviews.forEach(function(r) {
-        var stars = '';
-        for (var i = 0; i < 5; i++) stars += i < r.rating ? '★' : '☆';
-        html += '<div style="background:var(--body-surface);border:1px solid var(--body-border);padding:1.5rem;">'
-          + '<div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;">'
-          + (r.profile_photo_url
-              ? '<img src="' + r.profile_photo_url + '" style="width:40px;height:40px;border-radius:50%;object-fit:cover;">'
-              : '<div style="width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:700;color:#000;font-size:1rem;">' + (r.author_name||'?')[0] + '</div>')
-          + '<div>'
-          + '<div style="font-family:'Raleway',sans-serif;font-size:0.75rem;font-weight:700;color:var(--text-dark);">' + r.author_name + '</div>'
-          + '<div style="font-size:0.62rem;color:var(--text-mid);margin-top:0.1rem;">' + r.relative_time_description + '</div>'
-          + '</div></div>'
-          + '<div style="color:#FBBC05;font-size:0.85rem;letter-spacing:0.05em;margin-bottom:0.75rem;">' + stars + '</div>'
-          + '<div style="font-family:'Playfair Display',serif;font-size:0.82rem;line-height:1.75;color:var(--text-dark);font-style:italic;">'
-          + (r.text ? '&ldquo;' + r.text + '&rdquo;' : '<em style="color:var(--text-mid);">★ Rating only — no written review</em>')
-          + '</div>'
-          + '</div>';
+        // Render review cards
+        var grid = document.getElementById('g-reviews-grid');
+        if (!grid || !data.reviews || !data.reviews.length) return;
+
+        grid.innerHTML = data.reviews.map(function(r) {
+          var stars = renderStars(r.rating);
+          var avatar = r.photo
+            ? '<img src="' + r.photo + '" style="width:40px;height:40px;border-radius:50%;object-fit:cover;">'
+            : '<div style="width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:700;color:#000;font-size:1rem;">' + (r.author||'?')[0].toUpperCase() + '</div>';
+          return '<div style="background:var(--body-surface);border:1px solid var(--body-border);padding:1.5rem;">'
+            + '<div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;">'
+            + avatar
+            + '<div>'
+            + '<div style="font-family:'Raleway',sans-serif;font-size:0.75rem;font-weight:700;color:var(--text-dark);">' + r.author + '</div>'
+            + '<div style="font-size:0.62rem;color:var(--text-mid);margin-top:0.1rem;">' + r.time + '</div>'
+            + '</div></div>'
+            + '<div style="color:#FBBC05;font-size:0.85rem;letter-spacing:0.05em;margin-bottom:0.75rem;">' + stars + '</div>'
+            + '<div style="font-family:'Playfair Display',serif;font-size:0.82rem;line-height:1.75;color:var(--text-dark);font-style:italic;">'
+            + (r.text ? '&ldquo;' + r.text + '&rdquo;' : '<em style="color:var(--text-mid);">&#9733; Rating only</em>')
+            + '</div></div>';
+        }).join('');
+      })
+      .catch(function(err) {
+        console.warn('Could not load reviews:', err);
+        var loading = document.getElementById('g-reviews-loading');
+        if (loading) loading.style.display = 'none';
       });
-      grid.innerHTML = html;
-      });
-    });
-  };
+  }
 
-  // Start loading when page is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', loadReviews);
   } else {

@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/reviews.js": {
+      "runtime": "edge"
+    }
+  }
+}

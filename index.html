@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tolliver Timepieces — Pre-Owned Luxury Watches</title>
 <meta name="description" content="Tolliver Timepieces — Authenticated pre-owned luxury watches. Rolex, Patek Philippe, AP and more. Conway, Arkansas. Nationwide insured shipping.">
@@ -638,7 +639,8 @@ footer { background:#1A1A1A; padding:3rem 2rem; }
   <nav>
     <a href="#available">Available Watches</a>
     <a href="#how-it-works">How It Works</a>
-    <a href="#sell">Sell Your Watch</a>
+    <a href="/sell-your-watch.html">Sell Your Watch</a>
+    <a href="/rolex.html">Rolex</a>
     <a href="#reviews">Reviews</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -1194,61 +1196,25 @@ footer { background:#1A1A1A; padding:3rem 2rem; }
 <!-- GOOGLE REVIEWS FETCH SCRIPT -->
 <script>
 (function() {
-  function renderStars(n) {
-    var s = '';
-    for (var i = 1; i <= 5; i++) s += i <= n ? '★' : '☆';
-    return s;
-  }
-  function loadReviews() {
+  // Try to update the rating badge from live API
+  // Static review cards always remain — API success just updates the count
+  function tryLiveBadge() {
     fetch('/api/reviews')
       .then(function(r){ return r.json(); })
       .then(function(data) {
-        var loading = document.getElementById('g-reviews-loading');
-        if (loading) loading.style.display = 'none';
-        if (data.error) {
-          // API not ready yet — show static fallback badge
-          var grid = document.getElementById('g-reviews-grid');
-          if (grid) grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--text-mid);font-size:0.8rem;">Reviews loading from Google — check back soon, or <a href="https://maps.app.goo.gl/zpQWhdvsrh4EP9Dv9" target="_blank" style="color:var(--gold);">view our Google listing</a>.</div>';
-          return;
-        }
+        if (data.error || !data.rating) return; // API not ready — keep static display
+        // Only update the badge numbers, never touch the review cards
         var el = document.getElementById('g-rating-num');
         if (el) el.textContent = parseFloat(data.rating).toFixed(1);
-        el = document.getElementById('g-stars');
-        if (el) el.textContent = renderStars(Math.round(data.rating));
         el = document.getElementById('g-count');
         if (el) el.textContent = data.total + ' Google reviews';
-        var grid = document.getElementById('g-reviews-grid');
-        if (!grid || !data.reviews || !data.reviews.length) return;
-        var html = '';
-        data.reviews.forEach(function(r) {
-          var initial = r.author ? r.author[0].toUpperCase() : '?';
-          var avatar = r.photo
-            ? '<img src="' + r.photo + '" style="width:40px;height:40px;border-radius:50%;object-fit:cover;">'
-            : '<div style="width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:700;color:#000;font-size:1rem;">' + initial + '</div>';
-          var txt = r.text ? '“' + r.text + '”' : '<em style="color:var(--text-mid);">★ Rating only</em>';
-          html += '<div style="background:var(--body-surface);border:1px solid var(--body-border);padding:1.5rem;">'
-            + '<div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;">'
-            + avatar
-            + '<div>'
-            + '<div style="font-family:Raleway,sans-serif;font-size:0.75rem;font-weight:700;color:var(--text-dark);">' + r.author + '</div>'
-            + '<div style="font-size:0.62rem;color:var(--text-mid);margin-top:0.1rem;">' + r.time + '</div>'
-            + '</div></div>'
-            + '<div style="color:#FBBC05;font-size:0.85rem;margin-bottom:0.75rem;">' + renderStars(r.rating) + '</div>'
-            + '<div style="font-family:Georgia,serif;font-size:0.82rem;line-height:1.75;color:var(--text-dark);font-style:italic;">' + txt + '</div>'
-            + '</div>';
-        });
-        grid.innerHTML = html;
       })
-      .catch(function(err) {
-        console.warn('Reviews load error:', err);
-        var loading = document.getElementById('g-reviews-loading');
-        if (loading) loading.style.display = 'none';
-      });
+      .catch(function() {}); // Silently fail — static content stays
   }
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', loadReviews);
+    document.addEventListener('DOMContentLoaded', tryLiveBadge);
   } else {
-    loadReviews();
+    tryLiveBadge();
   }
 })();
 </script>

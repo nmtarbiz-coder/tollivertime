@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pre-Owned Omega Watches for Sale | Tolliver Timepieces — Conway, Arkansas</title>
+  <meta name="description" content="Buy pre-owned Omega watches from Tolliver Timepieces in Conway, Arkansas. Seamaster, Speedmaster, Constellation — authenticated, 1-year guaranteed, ships nationwide.">
+  <meta name="keywords" content="pre-owned Omega watches Arkansas, buy Omega Conway AR, used Omega Seamaster, Omega Speedmaster for sale, Omega Moonwatch">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.tollivertime.com/omega.html">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Dark header palette */
+  --header-bg: #2A2A2A;
+  --header-border: #3A3A3A;
+  /* Light body palette */
+  --body-bg: #F5F2ED;
+  --body-surface: #FFFFFF;
+  --body-surface2: #EEEBE5;
+  --body-border: #DDD8D0;
+  /* Text */
+  --text-dark: #1A1A1A;
+  --text-mid: #555050;
+  --text-light: #8A8278;
+  /* Accents */
+  --gold: #B8943A;
+  --gold2: #D4AF5A;
+  --gold-light: rgba(184,148,58,0.12);
+  --charcoal: #2A2A2A;
+  --red: #B03A3A;
+  --green: #3A7A5A;
+}
+
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body {
+  font-family: 'Raleway', sans-serif;
+  background: var(--body-bg);
+  color: var(--text-dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+@keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+/* ─── PAGE LOADER ────────────────────────────── */
+#page-loader {
+  position: fixed; inset: 0;
+  background: var(--charcoal);
+  z-index: 9999;
+  display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1.25rem;
+  transition: opacity 0.6s ease;
+}
+#page-loader.hidden { opacity: 0; pointer-events: none; }
+.loader-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem; font-weight: 400; letter-spacing: 0.12em;
+  color: #C9A84C; text-transform: uppercase;
+}
+.loader-logo span { font-style: italic; color: #fff; }
+.loader-bar { width: 140px; height: 1px; background: #444; position: relative; overflow: hidden; }
+.loader-bar::after {
+  content: ''; position: absolute; left: -60%; top: 0;
+  width: 60%; height: 100%; background: #C9A84C;
+  animation: load 1.2s ease infinite;
+}
+@keyframes load { to { left: 110%; } }
+
+/* ─── TOP HEADER BAR ─────────────────────────── */
+.top-bar {
+  background: var(--charcoal);
+  padding: 0.5rem 2rem;
+  display: flex; align-items: center; justify-content: center;
+  gap: 2rem; flex-wrap: wrap;
+  border-bottom: 1px solid var(--header-border);
+}
+@media(max-width:700px){ .top-bar { display:none; } }
+@media(max-width:900px){
+  .hero-review-grid { grid-template-columns:1fr !important; }
+  .hero-review-grid .hero-review-img { min-height:280px !important; height:280px !important; }
+  .featured-reviews-wrapper { grid-template-columns:1fr !important; }
+}
+.top-bar a {
+  font-size: 0.72rem; letter-spacing: 0.1em;
+  color: #AAA; text-decoration: none; transition: color 0.15s;
+}
+.top-bar a:hover { color: #C9A84C; }
+.top-bar-divider { color: #444; font-size: 0.7rem; }
+
+/* ─── MAIN HEADER ────────────────────────────── */
+header {
+  background: var(--charcoal);
+  padding: 1.5rem 2rem 1.25rem;
+  text-align: center;
+  border-bottom: 3px solid var(--gold);
+  position: sticky; top: 0; z-index: 100;
+}
+.logo-area { margin-bottom: 1rem; }
+.logo-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem; font-weight: 500; letter-spacing: 0.2em;
+  color: #FFFFFF; text-transform: uppercase; line-height: 1;
+}
+.logo-text em {
+  font-style: italic; color: var(--gold2); font-weight: 400;
+}
+.logo-tagline {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase;
+  color: #888; margin-top: 0.4rem;
+}
+.logo-icon { font-size: 1.8rem; margin-bottom: 0.3rem; display: block; }
+
+/* Replace logo-area with image when logo found */
+.logo-img { height: 70px; width: auto; display: block; margin: 0 auto 0.5rem; }
+
+header nav {
+  display: flex; justify-content: center; gap: 2.5rem;
+}
+header nav a {
+  font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: #AAA; text-decoration: none; transition: color 0.15s;
+  padding-bottom: 2px; border-bottom: 1px solid transparent;
+}
+header nav a:hover { color: #fff; border-bottom-color: var(--gold); }
+
+/* ─── MOBILE HEADER: compact sticky bar ──────── */
+@media(max-width:700px){
+  header { padding: 0.6rem 1rem 0.5rem; }
+  .logo-area { margin-bottom: 0.4rem; }
+  .logo-text { font-size: 1.25rem; letter-spacing: 0.12em; }
+  .logo-tagline { display: none; }
+  .logo-icon { font-size: 1rem; margin-bottom: 0.1rem; }
+  .logo-img { height: 38px; }
+  header nav { gap: 0.4rem 0.9rem; flex-wrap: wrap; justify-content: center; overflow-x: visible; padding: 0 0.5rem 2px; }
+  header nav a { font-size: 0.58rem; letter-spacing: 0.08em; white-space: nowrap; }
+}
+
+/* ─── HERO ───────────────────────────────────── */
+.hero {
+  position: relative;
+  height: 75vh; min-height: 500px;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.75) 100%),
+    url('https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=1600&q=80&auto=format') center/cover no-repeat;
+}
+.hero-content { position: relative; z-index: 1; padding: 2rem; }
+.hero-eyebrow {
+  font-size: 0.85rem; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--gold2); margin-bottom: 1.25rem;
+  animation: fadeIn 0.8s ease both;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.9), 0 0 30px rgba(0,0,0,0.7);
+}
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: '——'; margin: 0 0.75rem; opacity: 0.5;
+}
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 400; color: #FFFFFF; line-height: 1.1;
+  letter-spacing: 0.02em; margin-bottom: 1.25rem;
+  animation: fadeIn 0.8s 0.1s ease both;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.95), 0 4px 30px rgba(0,0,0,0.8);
+}
+.hero-title em { font-style: italic; color: var(--gold2); }
+.hero-sub {
+  font-size: 0.85rem; color: rgba(255,255,255,0.92);
+  letter-spacing: 0.05em; margin-bottom: 2.5rem;
+  animation: fadeIn 0.8s 0.2s ease both;
+  text-shadow: 0 1px 10px rgba(0,0,0,0.9);
+}
+.hero-btns {
+  display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  animation: fadeIn 0.8s 0.3s ease both;
+}
+.btn-hero-primary {
+  background: #fff; color: #1A1A1A;
+  padding: 0.85rem 2.5rem;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em;
+  text-transform: uppercase; text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+  display: inline-block;
+}
+.btn-hero-primary:hover { background: var(--gold2); color: #1A1A1A; }
+.btn-hero-outline {
+  background: transparent; color: #fff;
+  border: 1px solid rgba(255,255,255,0.6);
+  padding: 0.85rem 2.5rem;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em;
+  text-transform: uppercase; text-decoration: none;
+  transition: all 0.15s; display: inline-block;
+}
+.btn-hero-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+
+/* ─── GOLD DIVIDER ───────────────────────────── */
+.gold-divider {
+  background: var(--charcoal);
+  border-top: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold);
+  padding: 1rem 2rem;
+  text-align: center;
+  display: flex; align-items: center; justify-content: center; gap: 3rem; flex-wrap: wrap;
+}
+.divider-stat { text-align: center; }
+.divider-stat-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem; font-weight: 400; color: var(--gold2);
+}
+.divider-stat-label {
+  font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: #888; margin-top: 0.2rem;
+}
+.divider-sep { color: #444; font-size: 1.5rem; }
+
+/* ─── SECTION ─────────────────────────────────── */
+.section { padding: 4rem 2rem; max-width: 1400px; margin: 0 auto; }
+.section-header { text-align: center; margin-bottom: 3rem; }
+.section-eyebrow {
+  font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.75rem;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem; font-weight: 400; color: var(--text-dark);
+  letter-spacing: 0.02em;
+}
+.section-title em { font-style: italic; color: var(--gold); }
+.section-line {
+  width: 60px; height: 2px; background: var(--gold);
+  margin: 1rem auto 0;
+}
+
+/* ─── FILTER BAR ─────────────────────────────── */
+.filter-strip {
+  display: flex; gap: 0.75rem; flex-wrap: wrap;
+  margin-bottom: 2.5rem; align-items: center;
+  padding-bottom: 1.5rem; border-bottom: 1px solid var(--body-border);
+}
+.filter-input {
+  background: #fff; border: 1px solid var(--body-border);
+  color: var(--text-dark); padding: 0.6rem 1rem;
+  font-family: 'Raleway', sans-serif; font-size: 0.78rem;
+  outline: none; width: 280px; transition: border-color 0.15s;
+}
+.filter-input::placeholder { color: var(--text-light); }
+.filter-input:focus { border-color: var(--gold); }
+.filter-select {
+  background: #fff; border: 1px solid var(--body-border);
+  color: var(--text-mid); padding: 0.6rem 0.9rem;
+  font-family: 'Raleway', sans-serif; font-size: 0.75rem; outline: none; cursor: pointer;
+}
+.results-count { font-size: 0.7rem; color: var(--text-light); margin-left: auto; font-style: italic; }
+
+/* ─── WATCH GRID — TALL PORTRAIT CARDS ───────── */
+.watch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+.watch-card {
+  background: var(--body-surface);
+  border: 1px solid var(--body-border);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: fadeIn 0.4s ease both;
+  display: flex; flex-direction: column;
+}
+.watch-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+}
+.watch-card:hover .watch-photo img { transform: scale(1.04); }
+
+/* TALL PORTRAIT — 3:4 ratio */
+.watch-photo {
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: var(--body-surface2);
+  position: relative;
+}
+.watch-photo img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.5s ease; display: block;
+}
+.watch-photo-placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.75rem;
+}
+.ph-icon { font-size: 3rem; opacity: 0.15; }
+.ph-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--text-light); opacity: 0.5;
+}
+.photo-count-badge {
+  position: absolute; bottom: 0.6rem; right: 0.6rem;
+  background: rgba(0,0,0,0.65); color: #fff;
+  font-size: 0.6rem; padding: 0.2rem 0.5rem; letter-spacing: 0.06em;
+}
+.watch-tag {
+  position: absolute; top: 0.75rem; left: 0.75rem;
+  background: var(--charcoal); color: #fff;
+  font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+}
+
+.watch-info { padding: 1rem 1.1rem 1.25rem; flex: 1; display: flex; flex-direction: column; }
+.watch-card-brand {
+  font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.35rem; font-weight: 600;
+}
+.watch-card-model {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem; line-height: 1.3; color: var(--text-dark);
+  margin-bottom: 0.25rem;
+}
+.watch-card-ref { font-size: 0.68rem; color: var(--text-light); margin-bottom: 0.85rem; }
+.watch-card-chips { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 1rem; }
+.chip {
+  font-size: 0.58rem; letter-spacing: 0.06em;
+  background: var(--body-surface2); color: var(--text-mid);
+  padding: 0.15rem 0.5rem; border: 1px solid var(--body-border);
+}
+.watch-card-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 0.85rem; border-top: 1px solid var(--body-border);
+  margin-top: auto;
+}
+.watch-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem; font-weight: 500; color: var(--text-dark);
+}
+.watch-inquire {
+  font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-mid); background: none;
+  border: 1px solid var(--body-border);
+  padding: 0.4rem 0.85rem; cursor: pointer;
+  font-family: 'Raleway', sans-serif; font-weight: 600;
+  transition: all 0.15s;
+}
+.watch-inquire:hover { background: var(--charcoal); color: #fff; border-color: var(--charcoal); }
+
+/* ─── LIGHTBOX ───────────────────────────────── */
+.lightbox {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.88); z-index: 600;
+  align-items: center; justify-content: center; padding: 1rem;
+}
+.lightbox.open { display: flex; }
+.lb-inner {
+  background: #fff; width: 900px; max-width: 100%;
+  max-height: 92vh; overflow-y: auto;
+  animation: fadeIn 0.2s ease;
+  display: grid; grid-template-columns: 1.1fr 1fr;
+}
+@media(max-width:640px){ .lb-inner { grid-template-columns: 1fr; } }
+
+.lb-photo-panel { background: var(--body-surface2); position: relative; }
+.lb-main-img { aspect-ratio: 3/4; overflow: hidden; }
+.lb-main-img img { width:100%; height:100%; object-fit:cover; display:block; }
+@media(max-width:700px){
+  .lb-main-img {
+    aspect-ratio: unset !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow: hidden;
+  }
+  .lb-main-img img {
+    width: 100% !important;
+    max-width: 100vw !important;
+    height: auto !important;
+    max-height: 62dvh;
+    object-fit: contain !important;
+    background: #111;
+    display: block;
+  }
+}
+.lb-main-placeholder { aspect-ratio:3/4; display:flex; align-items:center; justify-content:center; font-size:5rem; opacity:0.1; }
+.lb-thumbs-row { display:flex; gap:2px; padding:2px; overflow-x:auto; background:var(--body-border); }
+.lb-thumb { width:65px; height:65px; flex-shrink:0; overflow:hidden; cursor:pointer; opacity:0.5; transition:opacity 0.15s; }
+.lb-thumb.active { opacity:1; outline:2px solid var(--gold); }
+.lb-thumb img { width:100%; height:100%; object-fit:cover; }
+.lb-close {
+  position:absolute; top:0.75rem; right:0.75rem;
+  background:rgba(0,0,0,0.5); border:none; color:#fff;
+  width:30px; height:30px; border-radius:50%; font-size:0.9rem;
+  cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:10;
+}
+@media(max-width:700px){
+  .lightbox { padding: 0; align-items: flex-start; overflow: hidden; }
+  .lb-inner {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-width: 0 !important;
+    max-height: 100dvh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-radius: 0;
+    box-sizing: border-box;
+  }
+  .lb-photo-panel { width: 100%; overflow: hidden; box-sizing: border-box; }
+  .lb-close {
+    position: fixed;
+    top: auto;
+    bottom: calc(1.5rem + env(safe-area-inset-bottom));
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
+    width: 48px; height: 48px;
+    font-size: 1.1rem;
+    background: rgba(0,0,0,0.75);
+    border: 1px solid rgba(255,255,255,0.25);
+    z-index: 700;
+  }
+}
+
+.lb-info { padding: 2rem 1.75rem; display:flex; flex-direction:column; }
+.lb-brand { font-size:0.62rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); font-weight:600; margin-bottom:0.4rem; }
+.lb-model { font-family:'Playfair Display',serif; font-size:1.7rem; font-weight:400; line-height:1.2; color:var(--text-dark); margin-bottom:0.3rem; }
+.lb-ref { font-size:0.72rem; color:var(--text-light); margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid var(--body-border); }
+.lb-price { font-family:'Playfair Display',serif; font-size:2rem; font-weight:500; color:var(--text-dark); margin-bottom:1.5rem; }
+.lb-specs { display:grid; grid-template-columns:1fr 1fr; gap:0.6rem; margin-bottom:1.5rem; }
+.lb-spec { background:var(--body-surface2); padding:0.6rem 0.75rem; }
+.lb-spec-label { font-size:0.55rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-light); margin-bottom:0.2rem; }
+.lb-spec-value { font-size:0.8rem; color:var(--text-dark); font-weight:500; }
+.lb-notes { font-size:0.75rem; color:var(--text-mid); line-height:1.7; margin-bottom:1.5rem; padding:0.85rem; background:var(--body-surface2); border-left:3px solid var(--gold); }
+.lb-actions { display:flex; flex-direction:column; gap:0.6rem; margin-top:auto; }
+.lb-btn-primary {
+  background:var(--charcoal); color:#fff; border:none;
+  padding:0.9rem; font-family:'Raleway',sans-serif;
+  font-size:0.72rem; font-weight:600; letter-spacing:0.16em;
+  text-transform:uppercase; cursor:pointer; transition:background 0.15s;
+}
+.lb-btn-primary:hover { background:#444; }
+.lb-btn-outline {
+  background:none; color:var(--text-mid);
+  border:1px solid var(--body-border); padding:0.75rem;
+  font-family:'Raleway',sans-serif; font-size:0.68rem;
+  letter-spacing:0.12em; text-transform:uppercase; cursor:pointer;
+  transition:all 0.15s; text-align:center; text-decoration:none; display:block;
+}
+.lb-btn-outline:hover { border-color:var(--charcoal); color:var(--charcoal); }
+
+/* ─── SOLD SECTION ───────────────────────────── */
+.sold-section-wrap { background: var(--charcoal); padding: 4rem 2rem; }
+.sold-section-inner { max-width:1400px; margin:0 auto; }
+.sold-section-title {
+  font-family:'Playfair Display',serif;
+  font-size:1.8rem; font-weight:400; color:#fff;
+  text-align:center; margin-bottom:0.5rem;
+}
+.sold-section-title em { font-style:italic; color:var(--gold2); }
+.sold-sub { text-align:center; font-size:0.68rem; letter-spacing:0.16em; text-transform:uppercase; color:#888; margin-bottom:2rem; }
+.sold-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(160px,1fr));
+  gap:1px; background:var(--header-border);
+}
+.sold-card {
+  background:var(--charcoal); padding:0;
+  position:relative; overflow:hidden;
+  border-top: 1px solid #3A3A3A;
+  display:flex; flex-direction:column;
+}
+.sold-card::after {
+  content:'SOLD'; position:absolute; top:12px; right:-24px;
+  background:var(--red); color:#fff;
+  font-size:0.5rem; letter-spacing:0.1em; font-weight:700;
+  padding:0.2rem 2rem; transform:rotate(45deg);
+}
+.sold-photo { aspect-ratio:3/4; overflow:hidden; flex-shrink:0; }
+.sold-photo img { width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(20%) brightness(0.85); transition: filter 0.3s; }
+.sold-card:hover .sold-photo img { filter:grayscale(0%) brightness(1); }
+.sold-card-no-photo {
+  aspect-ratio:3/4; display:flex; align-items:center; justify-content:center;
+  background:#222; flex-shrink:0;
+}
+.sold-card-no-photo-icon { font-size:2rem; opacity:0.1; }
+.sold-card-body { padding:0.75rem 0.85rem; }
+.sold-brand { font-size:0.55rem; letter-spacing:0.16em; text-transform:uppercase; color:#666; margin-bottom:0.2rem; }
+.sold-model { font-family:'Playfair Display',serif; font-size:0.82rem; color:#AAA; line-height:1.3; }
+
+/* ─── SELL YOUR WATCH ────────────────────────── */
+.sell-wrap { background:var(--body-surface); border-top:1px solid var(--body-border); border-bottom:1px solid var(--body-border); }
+.sell-inner { max-width:1100px; margin:0 auto; padding:4rem 2rem; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; }
+@media(max-width:700px){ .sell-inner { grid-template-columns:1fr; gap:2rem; } }
+
+.sell-pitch h2 { font-family:'Playfair Display',serif; font-size:2rem; font-weight:400; margin-bottom:1rem; }
+.sell-pitch h2 em { font-style:italic; color:var(--gold); }
+.sell-pitch p { font-size:0.8rem; color:var(--text-mid); line-height:1.8; margin-bottom:0.85rem; }
+.sell-steps { list-style:none; counter-reset:steps; margin-top:1.5rem; }
+.sell-steps li {
+  counter-increment:steps; font-size:0.78rem; color:var(--text-mid);
+  line-height:1.7; padding-left:2.25rem; position:relative; margin-bottom:0.6rem;
+}
+.sell-steps li::before {
+  content:counter(steps);
+  position:absolute; left:0; top:0;
+  width:1.5rem; height:1.5rem; background:var(--gold);
+  color:#fff; font-size:0.7rem; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+}
+
+.form-group { margin-bottom:1rem; }
+.form-label { display:block; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-mid); margin-bottom:0.4rem; font-weight:600; }
+.form-input, .form-select, .form-textarea {
+  width:100%; background:#fff; border:1px solid var(--body-border);
+  color:var(--text-dark); padding:0.7rem 0.9rem;
+  font-family:'Raleway',sans-serif; font-size:0.8rem; outline:none;
+  transition:border-color 0.15s;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus { border-color:var(--gold); }
+.form-textarea { resize:vertical; min-height:100px; }
+.form-select option { background:#fff; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; }
+.form-submit {
+  width:100%; background:var(--charcoal); color:#fff; border:none;
+  padding:0.95rem; font-family:'Raleway',sans-serif;
+  font-size:0.75rem; font-weight:600; letter-spacing:0.18em;
+  text-transform:uppercase; cursor:pointer; margin-top:0.5rem;
+  transition:background 0.15s;
+}
+.form-submit:hover { background:#444; }
+
+/* ─── TRUST STRIP ────────────────────────────── */
+.trust-strip { background:var(--body-surface2); border-top:1px solid var(--body-border); border-bottom:1px solid var(--body-border); }
+.trust-inner { max-width:1200px; margin:0 auto; padding:3rem 2rem; display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; }
+@media(max-width:900px){ .trust-inner { grid-template-columns:1fr 1fr; } }
+@media(max-width:500px){ .trust-inner { grid-template-columns:1fr; } }
+.trust-item { text-align:center; }
+.trust-icon { font-size:2rem; margin-bottom:0.75rem; }
+.trust-title { font-family:'Playfair Display',serif; font-size:1.1rem; margin-bottom:0.5rem; }
+.trust-desc { font-size:0.75rem; color:var(--text-mid); line-height:1.7; }
+
+/* ─── CONTACT ────────────────────────────────── */
+.contact-strip { background:var(--charcoal); padding:3.5rem 2rem; }
+.contact-inner { max-width:900px; margin:0 auto; text-align:center; }
+.contact-title { font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:400; color:#fff; margin-bottom:0.5rem; }
+.contact-title em { font-style:italic; color:var(--gold2); }
+.contact-sub { font-size:0.75rem; color:#888; margin-bottom:2.5rem; }
+.contact-items { display:flex; justify-content:center; gap:3rem; flex-wrap:wrap; }
+.contact-item { text-align:center; }
+.contact-icon { font-size:1.5rem; margin-bottom:0.5rem; }
+.contact-label { font-size:0.58rem; letter-spacing:0.18em; text-transform:uppercase; color:#666; margin-bottom:0.3rem; }
+.contact-val { color:var(--gold2); font-size:0.88rem; text-decoration:none; }
+.contact-val:hover { color:#fff; }
+
+/* ─── FOOTER ─────────────────────────────────── */
+footer { background:#1A1A1A; padding:3rem 2rem; }
+.footer-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:2.5rem; }
+@media(max-width:640px){ .footer-inner { grid-template-columns:1fr; } }
+.footer-logo { font-family:'Playfair Display',serif; font-size:1.2rem; letter-spacing:0.15em; text-transform:uppercase; color:#C9A84C; margin-bottom:0.75rem; }
+.footer-logo span { font-style:italic; color:#fff; }
+.footer-desc { font-size:0.72rem; color:#666; line-height:1.75; }
+.footer-heading { font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase; color:#C9A84C; margin-bottom:1rem; font-weight:600; }
+.footer-links { list-style:none; }
+.footer-links li { margin-bottom:0.5rem; }
+.footer-links a { font-size:0.72rem; color:#666; text-decoration:none; transition:color 0.15s; }
+.footer-links a:hover { color:#fff; }
+.footer-bottom { max-width:1200px; margin:2rem auto 0; padding-top:1.5rem; border-top:1px solid #2A2A2A; display:flex; justify-content:space-between; flex-wrap:wrap; gap:0.5rem; }
+.footer-bottom p { font-size:0.62rem; color:#444; }
+
+/* ─── EMPTY STATE ────────────────────────────── */
+.empty-state { text-align:center; padding:5rem 2rem; }
+.empty-state h3 { font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:400; color:var(--text-mid); margin-bottom:0.5rem; }
+.empty-state p { font-size:0.78rem; color:var(--text-light); }
+
+/* ─── TOAST ──────────────────────────────────── */
+.toast { position:fixed; bottom:2rem; right:2rem; background:var(--charcoal); color:#fff; border-left:3px solid var(--gold); padding:0.85rem 1.25rem; font-size:0.75rem; z-index:9000; display:none; animation:fadeIn 0.2s ease; max-width:320px; font-family:'Raleway',sans-serif; }
+.toast.show { display:block; }
+
+::-webkit-scrollbar { width:4px; height:4px; }
+::-webkit-scrollbar-track { background:#f0ede8; }
+::-webkit-scrollbar-thumb { background:#ccc; }
+
+/* ─── TRUST SIGNALS ─────────────────────────── */
+.trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--body-border); border: 1px solid var(--body-border); }
+.trust-card { background: var(--body-surface); padding: 2rem 1.5rem; text-align: center; }
+.trust-icon { font-size: 2rem; margin-bottom: 1rem; }
+.trust-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--text-dark); }
+.trust-desc { font-size: 0.72rem; color: var(--text-mid); line-height: 1.7; }
+@media (max-width: 640px) { .trust-grid { grid-template-columns: 1fr; } }
+</style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"LocalBusiness","name":"Tolliver Timepieces",
+   "description":"Pre-owned Omega watches for sale in Conway, Arkansas.",
+   "url":"https://www.tollivertime.com/omega.html","telephone":"+15012376481",
+   "address":{"@type":"PostalAddress","addressLocality":"Conway","addressRegion":"AR","addressCountry":"US"},
+   "aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"17"}}
+  </script>
+</head>
+<body>
+<div class="top-bar">
+  <a href="tel:5012376481">(501) 237-6481</a>
+  <span class="top-bar-divider">|</span>
+  <a href="mailto:info@tollivertime.com">info@tollivertime.com</a>
+  <span class="top-bar-divider">|</span>
+  <a href="https://www.instagram.com/tollivertimepieces/" target="_blank">@tollivertimepieces</a>
+  <span class="top-bar-divider">|</span>
+  <span>Conway, Arkansas</span>
+</div>
+<header>
+  <div style="padding:1.5rem 2rem;text-align:center;border-bottom:1px solid var(--header-border);">
+    <a href="/" style="text-decoration:none;">
+      <div style="font-family:'Raleway',sans-serif;font-size:1.6rem;font-weight:300;letter-spacing:0.25em;text-transform:uppercase;color:#fff;">TOLLIVER <em style="font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);letter-spacing:0.15em;">TIMEPIECES</em></div>
+      <div style="font-size:0.55rem;letter-spacing:0.3em;text-transform:uppercase;color:#888;margin-top:0.3rem;">PRE-OWNED LUXURY TIMEPIECES &nbsp;&middot;&nbsp; CONWAY, ARKANSAS</div>
+    </a>
+  </div>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/#available">Available Watches</a>
+    <a href="/sell-your-watch.html">Sell Your Watch</a>
+    <a href="/rolex.html">Rolex</a>
+    <a href="/tudor.html">Tudor</a>
+    <a href="/omega.html" style="color:var(--gold)">Omega</a>
+    <a href="/iwc.html">IWC</a>
+    <a href="/panerai.html">Panerai</a>
+    <a href="/#reviews">Reviews</a>
+    <a href="/#contact">Contact</a>
+    
+  </nav>
+</header>
+
+<section style="background:linear-gradient(135deg,#1a1a1a 0%,#2a2a2a 100%);padding:5rem 2rem;text-align:center;border-bottom:3px solid var(--gold);">
+  <div style="max-width:800px;margin:0 auto;">
+    <div style="font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;font-family:'Raleway',sans-serif;">Pre-Owned Luxury Watches &middot; Conway, Arkansas</div>
+    <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:400;color:#fff;line-height:1.2;margin-bottom:1.25rem;">Pre-Owned <em style="color:var(--gold);">Omega Watches</em><br>for Sale</h1>
+    <p style="font-size:1rem;color:#bbb;line-height:1.8;max-width:580px;margin:0 auto 2rem;">Seamaster, Speedmaster, Constellation and more — authenticated Omega watches at fair market prices. Every piece personally tested and guaranteed.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="/#available" style="background:var(--gold);color:#000;padding:1rem 2.5rem;font-family:'Raleway',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;">View Available Watches</a>
+      <a href="sms:5012376481" style="background:transparent;border:1px solid rgba(255,255,255,0.3);color:#fff;padding:1rem 2.5rem;font-family:'Raleway',sans-serif;font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;">Text (501) 237-6481</a>
+    </div>
+  </div>
+</section>
+
+<div style="background:#111;border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);padding:1.25rem 2rem;text-align:center;">
+  <span style="font-family:'Raleway',sans-serif;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);">&#128737; &nbsp;1-Year Mechanical Guarantee on Every Watch</span>
+</div>
+
+<section style="background:var(--body-bg);padding:4rem 2rem;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-header">
+      <div class="section-eyebrow">Smart Buying</div>
+      <h2 class="section-title">Why Buy Pre-Owned <em>Omega</em>?</h2>
+      <div class="section-line"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:2rem;margin-top:2.5rem;">
+      <div style="background:var(--body-surface);padding:2rem;">
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:400;margin-bottom:0.75rem;">&#128142; Significant Savings</h3>
+        <p style="font-size:0.82rem;color:var(--text-mid);line-height:1.8;">Pre-owned Omega Seamaster 300M trades for $2,500–$4,500 vs $6,000+ retail. Moonwatches at 20–35% below authorized dealer pricing.</p>
+      </div>
+      <div style="background:var(--body-surface);padding:2rem;">
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:400;margin-bottom:0.75rem;">&#10003; Personally Authenticated</h3>
+        <p style="font-size:0.82rem;color:var(--text-mid);line-height:1.8;">Every watch inspected, tested, and confirmed running accurately before listing. What you see is what you get.</p>
+      </div>
+      <div style="background:var(--body-surface);padding:2rem;">
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:400;margin-bottom:0.75rem;">&#128737; 1-Year Guarantee</h3>
+        <p style="font-size:0.82rem;color:var(--text-mid);line-height:1.8;">Mechanical issues within one year &mdash; we make it right. Service, partial refund, or replacement. Zero risk.</p>
+      </div>
+      <div style="background:var(--body-surface);padding:2rem;">
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:400;margin-bottom:0.75rem;">&#128230; Ships Nationwide</h3>
+        <p style="font-size:0.82rem;color:var(--text-mid);line-height:1.8;">Fully insured shipping anywhere in the US. Local meetups also welcome in Conway, Arkansas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--body-surface2);padding:4rem 2rem;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-header">
+      <div class="section-eyebrow">Models We Carry</div>
+      <h2 class="section-title">Omega <em>Collections</em></h2>
+      <div class="section-line"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem;margin-top:2.5rem;">
+      <div style="background:var(--body-surface);border:1px solid var(--body-border);border-top:2px solid var(--gold);padding:1.75rem;"><h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:400;color:var(--text-dark);margin-bottom:0.75rem;">Seamaster 300M</h3><p style="font-size:0.8rem;color:var(--text-mid);line-height:1.75;">The James Bond watch. Iconic dive watch in steel, gold, and two-tone. One of the most recognizable watches ever made.</p></div><div style="background:var(--body-surface);border:1px solid var(--body-border);border-top:2px solid var(--gold);padding:1.75rem;"><h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:400;color:var(--text-dark);margin-bottom:0.75rem;">Speedmaster Moonwatch</h3><p style="font-size:0.8rem;color:var(--text-mid);line-height:1.75;">The watch worn on the moon. Hesalite and sapphire crystal versions. A true piece of horological history.</p></div><div style="background:var(--body-surface);border:1px solid var(--body-border);border-top:2px solid var(--gold);padding:1.75rem;"><h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:400;color:var(--text-dark);margin-bottom:0.75rem;">Constellation</h3><p style="font-size:0.8rem;color:var(--text-mid);line-height:1.75;">Omega's classic dress watch. Clean, refined, elegant. The Griffes case design is instantly recognizable.</p></div><div style="background:var(--body-surface);border:1px solid var(--body-border);border-top:2px solid var(--gold);padding:1.75rem;"><h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:400;color:var(--text-dark);margin-bottom:0.75rem;">Aqua Terra</h3><p style="font-size:0.8rem;color:var(--text-mid);line-height:1.75;">Versatile sports-dress watch. METAS-certified movement, teak dial, anti-magnetic. Exceptional daily wearer.</p></div><div style="background:var(--body-surface);border:1px solid var(--body-border);border-top:2px solid var(--gold);padding:1.75rem;"><h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:400;color:var(--text-dark);margin-bottom:0.75rem;">Seamaster Planet Ocean</h3><p style="font-size:0.8rem;color:var(--text-mid);line-height:1.75;">Professional diver with serious depth rating. Larger case, bold presence — Omega's top dive watch.</p></div><div style="background:var(--body-surface);border:1px solid var(--body-border);border-top:2px solid var(--gold);padding:1.75rem;"><h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:400;color:var(--text-dark);margin-bottom:0.75rem;">De Ville</h3><p style="font-size:0.8rem;color:var(--text-mid);line-height:1.75;">Refined dress watches. Tresor, Prestige, Hour Vision — classic elegance at its finest.</p></div><div style="background:var(--body-surface);border:1px solid var(--body-border);border-top:2px solid var(--gold);padding:1.75rem;"><h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:400;color:var(--text-dark);margin-bottom:0.75rem;">Railmaster</h3><p style="font-size:0.8rem;color:var(--text-mid);line-height:1.75;">Anti-magnetic field watch. Clean tool watch aesthetic with Co-Axial movement — underrated and underpriced.</p></div><div style="background:var(--body-surface);border:1px solid var(--body-border);border-top:2px solid var(--gold);padding:1.75rem;"><h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:400;color:var(--text-dark);margin-bottom:0.75rem;">Globemaster</h3><p style="font-size:0.8rem;color:var(--text-mid);line-height:1.75;">Annual calendar and fluted bezel — Omega's refined modern dress watch flagship.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#1a1a1a;border-top:3px solid var(--gold);padding:4rem 2rem;text-align:center;">
+  <div style="max-width:700px;margin:0 auto;">
+    <h2 style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:400;color:#fff;margin-bottom:1rem;">Looking for a Specific Omega?</h2>
+    <p style="color:#bbb;font-size:0.9rem;line-height:1.8;margin-bottom:2rem;">Don't see what you're after in our current inventory? Text Nathan &mdash; he sources watches constantly and can often find exactly what you want.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="/#available" style="background:var(--gold);color:#000;padding:1rem 2.5rem;font-family:'Raleway',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;">Browse Current Inventory</a>
+      <a href="sms:5012376481" style="background:transparent;border:1px solid rgba(255,255,255,0.3);color:#fff;padding:1rem 2.5rem;font-family:'Raleway',sans-serif;font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;">Text (501) 237-6481</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:2rem;max-width:1200px;margin:0 auto;padding:3rem 2rem;">
+    <div>
+      <div style="font-family:'Raleway',sans-serif;font-size:1.1rem;font-weight:300;letter-spacing:0.2em;color:#fff;margin-bottom:0.5rem;">TOLLIVER <em style="font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);">TIMEPIECES</em></div>
+      <div style="font-size:0.7rem;color:#888;line-height:1.8;">Pre-owned luxury timepieces.<br>Conway, Arkansas<br><a href="tel:5012376481" style="color:#888;">(501) 237-6481</a><br><a href="mailto:info@tollivertime.com" style="color:#888;">info@tollivertime.com</a></div>
+    </div>
+    <div>
+      <div style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#666;margin-bottom:1rem;">Pages</div>
+      <div style="display:flex;flex-direction:column;gap:0.5rem;">
+        <a href="/" style="font-size:0.72rem;color:#999;text-decoration:none;">Home</a>
+        <a href="/sell-your-watch.html" style="font-size:0.72rem;color:#999;text-decoration:none;">Sell Your Watch</a>
+        <a href="/rolex.html" style="font-size:0.72rem;color:#999;text-decoration:none;">Rolex</a>
+        <a href="/tudor.html" style="font-size:0.72rem;color:#999;text-decoration:none;">Tudor</a>
+        <a href="/omega.html" style="font-size:0.72rem;color:#999;text-decoration:none;">Omega</a>
+        <a href="/iwc.html" style="font-size:0.72rem;color:#999;text-decoration:none;">IWC</a>
+        <a href="/panerai.html" style="font-size:0.72rem;color:#999;text-decoration:none;">Panerai</a>
+        <a href="/#reviews" style="font-size:0.72rem;color:#999;text-decoration:none;">Reviews</a>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#666;margin-bottom:1rem;">Connect</div>
+      <div style="display:flex;flex-direction:column;gap:0.5rem;">
+        <a href="https://www.instagram.com/tollivertimepieces/" target="_blank" style="font-size:0.72rem;color:#999;text-decoration:none;">Instagram</a>
+        <a href="https://www.facebook.com/tollivertime" target="_blank" style="font-size:0.72rem;color:#999;text-decoration:none;">Facebook</a>
+        <a href="https://maps.app.goo.gl/zpQWhdvsrh4EP9Dv9" target="_blank" style="font-size:0.72rem;color:#999;text-decoration:none;">Google Business</a>
+        <a href="https://g.page/r/CdhAhW6rdZmOECA/review" target="_blank" style="font-size:0.72rem;color:var(--gold);text-decoration:none;">Leave a Review &#9733;</a>
+      </div>
+    </div>
+  </div>
+  <div style="border-top:1px solid #333;padding:1.5rem 2rem;text-align:center;font-size:0.62rem;color:#555;letter-spacing:0.1em;">
+    &copy; 2026 Tolliver Timepieces &nbsp;&middot;&nbsp; Conway, Arkansas &nbsp;&middot;&nbsp; Pre-Owned Luxury Watches
+  </div>
+</footer>
+<script>
+  // ════════════════════════════════════════
+  //  PASTE YOUR SUPABASE VALUES HERE
+  // ════════════════════════════════════════
+  const SUPABASE_URL  = 'https://kstbnvcozplquymqecck.supabase.co';
+  const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtzdGJudmNvenBscXV5bXFlY2NrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4NzY5ODYsImV4cCI6MjA4NzQ1Mjk4Nn0.RqcYRWvz4O-V1L5NAne8mP-nHKff8V451nAzle3CLWU';
+
+  // ════════════════════════════════════════
+
+  // Your contact info — update these
+  const CONTACT_PHONE     = '(501) 237-6481';  // Update with your number
+  const CONTACT_EMAIL     = 'info@tollivertime.com';
+  const CONTACT_INSTAGRAM = 'tollivertimepieces';
+  const CONTACT_LOCATION  = 'Conway, Arkansas';
+  const OWNER_USER_ID = '73efe261-02c3-4b58-9cea-459e1cfed7c6'; // Your DialTrader user_id from Supabase
+</script>
+</body>
+</html>

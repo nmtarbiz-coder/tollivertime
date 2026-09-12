@@ -1282,7 +1282,7 @@ setContact();
 async function init() {
   try {
     const [invRes, soldRes] = await Promise.all([
-      db.from('inventory').select('*').eq('user_id', OWNER_USER_ID).eq('is_sample', false).order('created_at', { ascending: false }),
+      db.from('inventory').select('*').eq('user_id', OWNER_USER_ID).eq('is_sample', false).neq('hide_from_site', true).order('created_at', { ascending: false }),
       db.from('sold_inventory').select('brand,model,ref,sale_date,photo_urls').eq('user_id', OWNER_USER_ID).eq('is_sample', false).order('sale_date', { ascending: false }).limit(50)
     ]);
     const allInv = invRes.data || [];
